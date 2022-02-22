@@ -1,1 +1,223 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+//double manipulate ()
+//                  string length   current i pos   marker      function
+double strdict (std::string convert, int stopper, int backcut,char func, bool second) {
+
+std::cout << "The boolian is " << second << std::endl;
+std::cout << "Current position of backcut ->" << backcut << std::endl;
+std::cout << "strdict is active" << std::endl;
+std::cout << "stopper is at ----> " << stopper << std::endl;
+int conversion;
+int stitch [stopper];
+int numbank [stopper];
+int finalnum = 0;
+int i = 0;
+int j = 0;
+double returned;
+int saveplace;
+if (second == true){
+saveplace = stopper - (backcut + 1);
+} else {
+saveplace = stopper - backcut;
+}
+std::cout << "Current position of saveplace ->" << saveplace << std::endl;
+std::cout << "Current position of backcut (updated) ->" << backcut << std::endl;
+
+    while (backcut + i < stopper + 1) {
+        if (convert [i + backcut] == '0') {
+     conversion = 0;
+     stitch[j] = conversion;
+    } else if (convert[i+ backcut] == '1') {
+     conversion = 1;
+     stitch[j] = conversion;
+    } else if (convert[i+ backcut] == '2') {
+     conversion = 2;
+     stitch[j] = conversion;
+    } else if(convert[i+ backcut] == '3') {
+     conversion = 3;
+     stitch[j] = conversion;
+    } else if(convert[i+ backcut] == '4') {
+     conversion = 4;
+     stitch[j] = conversion;
+    } else if(convert[i+ backcut] == '5') {
+     conversion = 5;
+     stitch[j] = conversion;
+    } else if(convert[i+ backcut] == '6') {
+     conversion = 6;
+     stitch[j] = conversion;
+    } else if(convert[i+ backcut] == '7') {
+     conversion = 7;
+     stitch[j] = conversion;
+    } else if(convert[i+ backcut] == '8') {
+     conversion = 8;
+     stitch[j] = conversion;
+    } else if(convert[i+ backcut] == '9') {
+     conversion = 9;
+        stitch[j] = conversion;
+    }else{
+    break;
+    }
+
+
+    double add, add2;
+    double finalnum;
+
+    finalnum = stitch [j] * pow(10,saveplace);
+    add = finalnum;
+    add2 = add + add2;
+    returned = add2;
+
+
+    std::cout << "returned value ->" << returned << std::endl;
+     i++;
+     j++;
+     saveplace--;
+     std::cout << "i variable is at ->" << i << std::endl;
+    }
+     std::cout << "concluding stitch function" << std::endl;
+    if (func == 'x'){
+
+
+    } else if (func == '+'){
+
+    }
+
+ //finalnum + stitch[saveplace]
+
+return returned;
+}
+
+
+
+int body (std::string calculate) {
+    std::cout << "this is the entered strings length -->" << calculate.length()<< std::endl;
+    int numbertotal = 1;
+    for (int operand = 0; operand < calculate.length(); operand++){
+        if (calculate[operand] == '+' ||
+            calculate[operand] == '/' ||
+            calculate[operand] == '*' ||
+            calculate[operand] == '-'   ){
+            numbertotal = numbertotal + 1;
+            std::cout << "Number total is now ->"<< numbertotal << std::endl;
+            std::cout << "Operand is currently ->" << operand << std::endl;
+            }
+    }
+
+    int numcount = 0;
+    double numbank [numcount];
+    std::cout << "Final Number Total ->" << numbertotal << std::endl;
+    int lastnum = 0;
+    int marker = 0;
+    int on = 0;
+    char func = 'x';
+    int frontcut = 0;
+    bool second = false;
+    for (int i = 0; i < calculate.length() +1 ; i++){
+    std::cout << "counting variable is currently at " << i << std::endl;
+
+
+
+
+    if (calculate[i] == '0' && i < calculate.length() -1||
+        calculate[i] == '1' && i < calculate.length() -1||
+        calculate[i] == '2' && i < calculate.length() -1||
+        calculate[i] == '3' && i < calculate.length() -1||
+        calculate[i] == '4' && i < calculate.length() -1||
+        calculate[i] == '5' && i < calculate.length() -1||
+        calculate[i] == '6' && i < calculate.length() -1||
+        calculate[i] == '7' && i < calculate.length() -1||
+        calculate[i] == '8' && i < calculate.length() -1||
+        calculate[i] == '9' && i < calculate.length() -1  ){
+    std::cout << "digit entered ->" << calculate [i] << std::endl;
+
+        }else if (calculate [i] == '+' ||
+                    calculate [i] == '-' ||
+                    calculate [i] == '*' ||
+                    calculate [i] == '/' ){
+        double savednum;
+        func = calculate [i];
+        i - 1;
+        numbank [numcount] = savednum = strdict(calculate, i, marker , func, second = true);
+        std::cout << "func is currently ->" << func << std::endl;
+        marker = i + 1;
+        std::cout << "Updated Marker position ->" << marker << std::endl;
+        i + 1;
+        numcount + 1;
+        //second = true;
+
+        }else if (calculate[i] == '0' && i >= calculate.length() -1||
+                 calculate[i] == '1' && i >= calculate.length() -1||
+                 calculate[i] == '2' && i >= calculate.length() -1||
+                 calculate[i] == '3' && i >= calculate.length() -1||
+                 calculate[i] == '4' && i >= calculate.length() -1||
+                 calculate[i] == '5' && i >= calculate.length() -1||
+                 calculate[i] == '6' && i >= calculate.length() -1||
+                 calculate[i] == '7' && i >= calculate.length() -1||
+                 calculate[i] == '8' && i >= calculate.length() -1||
+                 calculate[i] == '9' && i >= calculate.length() -1){
+
+        double savednum;
+        std::cout << "Current digit in string ->" << calculate [i] << std::endl;
+        std::cout << "Current Marker Position ->" << marker << std::endl;
+        savednum = strdict(calculate, i, marker, func, false);
+        std::cout << "Savednum Position ->" << savednum << std::endl;
+
+                                                                    }
+
+
+                                                            }
+
+return 0;
+                                }
+
+
+int main(){
+
+std::cout << "press 'x' to exit!" << std::endl;
+std::string input;
+while (input != "x"){
+std::cin >> input;
+body (input);
+}
+
+return 0;
+}
+/*std::string input;
+ bool on = true;
+while (on == true) {
+
+        std::cin >> input;
+        int i = 0;
+        char variable;
+        double convert;
+       std::cout << input.length() << std::endl;
+       for (int recurse = 0; recurse <= input.length(); recurse++){
+       if (input[recurse] == '1' || input[recurse] == '2' || input[recurse] == '3' || input[recurse] == '4'
+           || input[recurse] == '5' || input[recurse] == '6' || input[recurse] == '7' || input[recurse] == '8'
+           || input[recurse] == '9' || input[recurse] == '0'){
+
+        //convert = input[recurse] - 48;
+
+        //std::cout << convert << std::endl;
+
+       } else if (input [recurse] == '+'){
+
+           double tempvar1, tempvar2;
+        tempvar1 = input[recurse--] ;
+        std::cout << recurse << std::endl;
+        tempvar2 = input[recurse+ 2] -48;
+        std::cout << tempvar2 << std::endl;
+        std::cout << recurse << std::endl;
+
+       }
+
+
+
+       }
+
+
+}*/
 
